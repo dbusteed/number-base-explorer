@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+/* App.js */
+
+body {
+  font-family: monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 15vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#controller {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#character-box-container {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: .75rem;
 }
 
-.App-link {
-  color: #61dafb;
+#button-container {
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#button-container button {
+  margin: 0 .25rem;
+}
+
+#base-selector {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10vw;
+}
+
+.radio-thing {
+  display: flex;
+  margin-bottom: .5rem;
+  align-items: baseline;
+}
+
+/* characterBox.js */
+
+.character-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-box-body {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 0 .25rem;
+}
+
+.character {
+  font-size: 1.5rem;
 }
