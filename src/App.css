@@ -32,6 +32,10 @@ body {
   margin: 0 .25rem;
 }
 
+#button-container select {
+  margin: 0 .25rem;
+}
+
 #base-selector {
   display: flex;
   flex-direction: column;
@@ -42,6 +46,16 @@ body {
   display: flex;
   margin-bottom: .5rem;
   align-items: baseline;
+}
+
+#add-base-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#add-base-container input {
+  width: 40%;
+  margin-right: .25rem;
 }
 
 /* characterBox.js */
