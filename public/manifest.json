@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Number Base Explorer",
+  "name": "Number Base Explorer",
   "icons": [
     {
       "src": "favicon.ico",
