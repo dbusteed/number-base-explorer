@@ -106,7 +106,7 @@ export default function App() {
             </select>
             <button onClick={() => {
               let val = Number(prompt('go to value (decimal)'))
-              if (val && val >= 0) {
+              if ((val && val >= 0) || val === 0) {
                 setValue(val)
               }
             }}>goto #</button>
