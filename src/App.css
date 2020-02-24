@@ -4,11 +4,22 @@ body {
   font-family: monospace;
 }
 
+#outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+#header-container {
+  border-bottom: 1px solid black;
+}
+
 #main-container {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 
 #controller {
@@ -24,15 +35,19 @@ body {
   margin-bottom: .75rem;
 }
 
-#button-container {
+.button-container {
+  margin-bottom: .5rem;
+}
+
+.button-container-bonus {
   margin-bottom: 1rem;
 }
 
-#button-container button {
+.button-container button {
   margin: 0 .25rem;
 }
 
-#button-container select {
+.button-container select {
   margin: 0 .25rem;
 }
 

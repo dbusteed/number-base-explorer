@@ -10,7 +10,7 @@ export default function App() {
   const [converter, setConverter] = useState(new BaseXConverter('0123456789'))
   const [customSet, setCustomSet] = useState('')
   const [step, setStep] = useState(1)
-  
+
   const [allConverters, setAllConverters] = useState({
     2: ["Base 2 (binary)", '01'],
     8: ["Base 8 (octal)", '01234567'],
@@ -37,68 +37,84 @@ export default function App() {
     } else {
       setDisplayValue(convertedValue)
     }
-    
+
   }, [value, converter])
 
   return (
-    <div id="main-container">
-      
-      <div id="base-selector">
-        <h2>select a number base...</h2>
+    <div id="outer-container">
 
-        {
-          Object.entries(allConverters).map(([key, value]) => (
-            <div key={key} className="radio-thing">
-              {
-                converter.alphabet === value[1]
-                ? <><input type="radio" name="base" onChange={() => changeConverter(key)} checked/> {value[0]}</>
-                : <><input type="radio" name="base" onChange={() => changeConverter(key)} /> {value[0]}</>
-              }
-            </div>
-          ))
-        }
-
-        <div id="add-base-container">
-          
-          <input type="text" placeholder="custom base" value={customSet} onChange={(e) => setCustomSet(e.currentTarget.value)} />
-          <button onClick={() => {
-            let set = [...new Set(customSet.split(''))].join('')
-            let newConv = {}
-            newConv[set] = [set, set]
-            setAllConverters({...allConverters, ...newConv})
-            setCustomSet('')
-          }}>add</button>       
-        
-        </div>
-
+      <div id="header-container">
+        <h1>number base explorer</h1>
       </div>
 
-      <div id="controller">
+      <div id="main-container">
 
-        <h2>use buttons to play with your number</h2>
+        <div id="base-selector">
+          <h2>select a number base...</h2>
 
-        <div id="character-box-container">
           {
-            displayValue.split('').map((char, idx) => (
-              <CharacterBox key={idx} char={char} position={`${converter.base**(displayValue.length-(idx+1))}`}/>
+            Object.entries(allConverters).map(([key, value]) => (
+              <div key={key} className="radio-thing">
+                {
+                  converter.alphabet === value[1]
+                    ? <><input type="radio" name="base" onChange={() => changeConverter(key)} checked /> {value[0]}</>
+                    : <><input type="radio" name="base" onChange={() => changeConverter(key)} /> {value[0]}</>
+                }
+              </div>
             ))
           }
-        </div>
-        
-        <div id="button-container">
-          <button onClick={() => setValue(value + Number(step))}>+ {step}</button>
-          <button onClick={() => setValue((value - Number(step)) < 0 ? 0 : value - Number(step))} disabled={value <= 0}>- {step}</button>
-          <select onChange={(e) => setStep(e.currentTarget.value)}>
-            <option>1</option>
-            <option>5</option>
-            <option>10</option>
-            <option>20</option>
-            <option>50</option>
-            <option>100</option>
-          </select>
+
+          <div id="add-base-container">
+
+            <input type="text" placeholder="custom base" value={customSet} onChange={(e) => setCustomSet(e.currentTarget.value)} />
+            <button onClick={() => {
+              let set = [...new Set(customSet.split(''))].join('')
+              let newConv = {}
+              newConv[set] = [set, set]
+              setAllConverters({ ...allConverters, ...newConv })
+              setCustomSet('')
+            }}>add</button>
+
+          </div>
+
         </div>
 
-        <i>decimal value: {value}</i>
+        <div id="controller">
+
+          <h2>use buttons to play with your number</h2>
+
+          <div id="character-box-container">
+            {
+              displayValue.split('').map((char, idx) => (
+                <CharacterBox key={idx} char={char} position={`${converter.base ** (displayValue.length - (idx + 1))}`} />
+              ))
+            }
+          </div>
+
+          <div className="button-container">
+            <button onClick={() => setValue(value + Number(step))}>+ {step}</button>
+            <button onClick={() => setValue((value - Number(step)) < 0 ? 0 : value - Number(step))} disabled={value <= 0}>- {step}</button>
+          </div>
+          <div className="button-container button-container-bonus">
+            <select onChange={(e) => setStep(e.currentTarget.value)}>
+              <option>1</option>
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+              <option>100</option>            
+            </select>
+            <button onClick={() => {
+              let val = Number(prompt('go to value (decimal)'))
+              if (val && val >= 0) {
+                setValue(val)
+              }
+            }}>goto #</button>
+          </div>
+
+          <i>decimal value: {value}</i>
+        </div>
+
       </div>
 
     </div>
