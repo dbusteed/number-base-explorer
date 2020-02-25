@@ -2,4 +2,4 @@
 
 an interactive tool for teaching / learning about different number bases.
 
-run like any ol' React app
+check it out [here](http://number-base-explorer.surge.sh/)
